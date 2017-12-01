@@ -1,3 +1,5 @@
+from math import sqrt
+
 def is_factor(n,f):
     '''
 Returns True if f is a factor of n.
@@ -10,6 +12,15 @@ def is_prime(n):
 Returns True if n is prime,
 OTW returns False.  n is a positive int.
 '''
+    if n == 1:
+        return 1 == 0  # 1 is not prime for some reason.
+    factors = 0
+    for x in range(2, int(sqrt(n) + 1)):
+        if n % x == 0:  # If you can divide by a number with no remainder it is a factor.
+            factors += 1
+        else:
+            continue
+    return factors == 0  # Returns True when there are zero factors aka number is prime.
 
 
 def mult_of_factor(n,f):
